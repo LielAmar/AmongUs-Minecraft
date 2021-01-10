@@ -4,6 +4,7 @@ import mazgani.amongus.commands.Command;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -35,7 +36,7 @@ public class HelpCommand extends Command {
 
     @Override
     public List<String> getTabList(CommandSender sender, String[] args) {
-        return null;
+        return new ArrayList<>();
     }
 
     @Override

@@ -9,9 +9,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class TestCommand extends Command {
 
@@ -36,7 +35,7 @@ public class TestCommand extends Command {
 
     @Override
     public List<String> getTabList(CommandSender sender, String[] args) {
-        return null;
+        return new ArrayList<>();
     }
 
     @Override

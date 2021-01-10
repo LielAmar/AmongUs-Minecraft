@@ -3,17 +3,12 @@ package mazgani.amongus.commands.sub;
 import mazgani.amongus.commands.Command;
 import mazgani.amongus.games.AUGame;
 import mazgani.amongus.games.GamesManager;
-import mazgani.amongus.lobbies.GameLobby;
-import mazgani.amongus.lobbies.LobbiesManager;
 import mazgani.amongus.maps.TestMap;
-import mazgani.amongus.players.AUPlayer;
-import mazgani.amongus.players.AUPlayersManager;
 import org.bukkit.ChatColor;
-import org.bukkit.block.Block;
-import org.bukkit.block.Sign;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StartLoneGameCommand extends Command {
@@ -43,7 +38,7 @@ public class StartLoneGameCommand extends Command {
 
     @Override
     public List<String> getTabList(CommandSender sender, String[] args) {
-        return null;
+        return new ArrayList<>();
     }
 
     @Override

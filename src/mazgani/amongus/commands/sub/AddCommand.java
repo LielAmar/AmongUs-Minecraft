@@ -1,27 +1,20 @@
 package mazgani.amongus.commands.sub;
 
+import static java.util.stream.Collectors.toCollection;
+
 import mazgani.amongus.commands.Command;
 import mazgani.amongus.games.AUGame;
-import mazgani.amongus.games.GamePlayer;
 import mazgani.amongus.lobbies.GameLobby;
 import mazgani.amongus.players.AUPlayer;
 import mazgani.amongus.players.AUPlayersManager;
-import mazgani.amongus.players.GameRole;
-import mazgani.amongus.shiptasks.ShipTask;
-import mazgani.amongus.shiptasks.inventorytasks.wires.WiresTask;
-import mazgani.amongus.utilities.items.ClickSuffix;
-import mazgani.amongus.utilities.items.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-
-import static java.util.stream.Collectors.joining;
 
 public class AddCommand extends Command {
 
@@ -50,7 +43,20 @@ public class AddCommand extends Command {
 
     @Override
     public List<String> getTabList(CommandSender sender, String[] args) {
-        return null;
+        if(this.tempLobby == null)
+            return new ArrayList<>();
+
+        List<String> onlinePlayersNames = Bukkit.getOnlinePlayers().stream()
+                .map(Player::getName)
+                .collect(toCollection(LinkedList::new));
+
+        //if the sender is a player - they must've been in the game - so their name is excluded
+        if(sender instanceof Player)
+        {
+            Player player = (Player) sender;
+            onlinePlayersNames.remove(player.getName());
+        }
+        return onlinePlayersNames;
     }
 
     @Override

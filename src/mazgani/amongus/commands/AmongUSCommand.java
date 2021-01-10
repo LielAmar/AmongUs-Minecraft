@@ -90,8 +90,7 @@ public class AmongUSCommand implements CommandExecutor, TabCompleter {
                 return false;
             }
 
-            String[] newArguments = new String[args.length - 1];
-            System.arraycopy(args, 1, newArguments, 0, newArguments.length);
+            String[] newArguments = fixArguments(args);
 
             cmd.execute(sender, newArguments);
             return true;
@@ -118,9 +117,16 @@ public class AmongUSCommand implements CommandExecutor, TabCompleter {
                     if(cmd == null)
                         return null;
 
-                    return cmd.getTabList(sender, args);
+                    return cmd.getTabList(sender, fixArguments(args));
             }
         }
         return null;
+    }
+
+    private String[] fixArguments(String[] arguments) {
+        String[] newArguments = new String[arguments.length - 1];
+        System.arraycopy(arguments, 1, newArguments, 0, newArguments.length);
+
+        return newArguments;
     }
 }
